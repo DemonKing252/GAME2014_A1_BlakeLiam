@@ -1,0 +1,32 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+/***************
+File: InstructionScript.cs
+Author: Liam Blake
+Created: 2020-09-16
+Modified: 2020-09-16
+Desc:
+    Managment of each button in the instruction scene.
+
+***************/
+public class InstructionScript : MonoBehaviour
+{
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

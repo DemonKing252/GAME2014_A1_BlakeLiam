@@ -18,9 +18,12 @@ public class MainMenuScript : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Leaving Main Menu Scene...");
+        SceneManager.LoadScene(2);
+    }
+    public void LoadInstrctions()
+    {
         SceneManager.LoadScene(1);
     }
-
     // Called when Quit Game button is pressed:
     public void QuitGame()
     {

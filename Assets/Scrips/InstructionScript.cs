@@ -21,7 +21,11 @@ public class InstructionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Utilities.scenesChanged == 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+        Utilities.scenesChanged++;
     }
 
     // Update is called once per frame

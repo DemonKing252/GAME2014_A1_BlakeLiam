@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-/***************
-File: InstructionScript.cs
+/*********************
+File: LoseScript.cs
 Author: Liam Blake
-Created: 2020-09-16
-Modified: 2020-09-16
+Created: 2020-09-22
+Modified: 2020-09-22
 Desc:
-    Managment of each button in the instruction scene.
+    Manager for the lose scene of this game.
 
-***************/
-public class InstructionScript : MonoBehaviour
+*********************/
+
+public class LoseScript : MonoBehaviour
 {
-    public void BackToMenu()
+    public void PlayAgain()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
         Utilities.scenesChanged++;
     }
 
@@ -26,7 +27,7 @@ public class InstructionScript : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        Utilities.scenesChanged++;  
+        Utilities.scenesChanged++;
     }
 
     // Update is called once per frame

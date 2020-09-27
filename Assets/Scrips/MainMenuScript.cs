@@ -40,11 +40,15 @@ public class MainMenuScript : MonoBehaviour
     void Start()
     {
         Utilities.scenesChanged++;
+
+        if (menuTheme != null)
+            menuTheme.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
+
+    public AudioSource menuTheme;
 }

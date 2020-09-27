@@ -19,7 +19,7 @@ public class GameScript : MonoBehaviour
         // Index 3 is lose scene (look in Unity->File->Build Settings->Scenes in Build
         SceneManager.LoadScene(3);
     }
-
+    public AudioSource mainTheme;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +32,13 @@ public class GameScript : MonoBehaviour
             SceneManager.LoadScene(0);
         }
         Utilities.scenesChanged++;
+
+        if (mainTheme != null)
+        {
+            mainTheme.volume = 50.0f;
+            mainTheme.Play();
+            mainTheme.loop = true;
+        }
     }
 
     // Update is called once per frame

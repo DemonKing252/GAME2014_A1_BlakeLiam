@@ -15,7 +15,7 @@ public class InstructionScript : MonoBehaviour
 {
     public void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene((int)Scene.MainMenu);
         Utilities.scenesChanged++;
     }
 
@@ -24,7 +24,7 @@ public class InstructionScript : MonoBehaviour
     {
         if (Utilities.scenesChanged == 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene((int)Scene.MainMenu);
         }
         Utilities.scenesChanged++;  
     }

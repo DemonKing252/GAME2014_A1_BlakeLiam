@@ -16,12 +16,12 @@ public class LoseScript : MonoBehaviour
 {
     public void PlayAgain()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene((int)Scene.Game);
         Utilities.scenesChanged++;
     }
     public void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene((int)Scene.MainMenu);
 
         Utilities.scenesChanged++;
     }
@@ -31,7 +31,7 @@ public class LoseScript : MonoBehaviour
     {
         if (Utilities.scenesChanged == 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene((int)Scene.MainMenu);
         }
         Utilities.scenesChanged++;
     }

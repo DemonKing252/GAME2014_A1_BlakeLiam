@@ -5025,7 +5025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7d5b6b3117c114f9e6c20a0bacc66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTheme: {fileID: 0}
+  health: {fileID: 1512477399}
+  mainTheme: {fileID: 1094530956}
 --- !u!4 &814232245
 Transform:
   m_ObjectHideFlags: 0

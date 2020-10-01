@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 /***************
-File: CameraScript_Game.cs
+File: CameraScript_Difficulty.cs
 Author: Liam Blake
-Created: 2020-09-29
-Modified: 2020-09-29
+Created: 2020-10-01
+Modified: 2020-10-01
 Desc:
-    Manager for the camera for this scene.
-***************/    
-public class CameraScript_Game : MonoBehaviour
+   Manager for the camera for this scene.
+***************/
+public class CameraScript_Difficulty : MonoBehaviour
 {
     public float ResolutionScaleX = 1.5f;
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class CameraScript_Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (Screen.orientation == ScreenOrientation.LandscapeLeft ||
             Screen.orientation == ScreenOrientation.LandscapeRight)
         {

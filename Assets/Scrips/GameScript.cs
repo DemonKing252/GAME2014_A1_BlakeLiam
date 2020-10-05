@@ -15,9 +15,14 @@ Desc:
 ********************/
 public class GameScript : MonoBehaviour
 {
+    public Text scoreText;
+
     // Note:
     // I'm not using Text Mesh Pro as my custom font doesn't work for it:
-    public Text health; 
+    public Text health;
+    public Image healthImage;
+    public Image heartImage;
+ 
 
     // Call Lose state (to prove it works)
     public void LoseState()
@@ -59,11 +64,15 @@ public class GameScript : MonoBehaviour
             mainTheme.Play();
             mainTheme.loop = true;
         }
+        scoreText.text = "Score: " + Player.score.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        scoreText.rectTransform.position = new Vector2(Screen.safeArea.xMin + scoreText.rectTransform.rect.width * 0.5f + 20.0f, Screen.safeArea.yMax - scoreText.rectTransform.rect.height * 0.5f - 50.0f);
+        health.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f + 70.0f, Screen.safeArea.yMax - health.rectTransform.rect.height * 0.5f - 50.0f);
+        heartImage.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f - 50.0f, Screen.safeArea.yMax - heartImage.rectTransform.rect.height * 0.5f);
         
     }
 }

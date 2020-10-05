@@ -4098,7 +4098,6 @@ GameObject:
   - component: {fileID: 697557556}
   - component: {fileID: 697557558}
   - component: {fileID: 697557557}
-  - component: {fileID: 697557559}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -4122,7 +4121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -477.18, y: -17.342}
+  m_AnchoredPosition: {x: -491, y: 0}
   m_SizeDelta: {x: 442.82416, y: 71.84473}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697557557
@@ -4167,19 +4166,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697557555}
   m_CullTransparentMesh: 0
---- !u!114 &697557559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697557555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5c6f1f61eb1a64eaebaca180b3f2e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 697557557}
 --- !u!1 &707113664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5025,7 +5011,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7d5b6b3117c114f9e6c20a0bacc66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 697557557}
   health: {fileID: 1512477399}
+  healthImage: {fileID: 589629291}
+  heartImage: {fileID: 806286418}
   mainTheme: {fileID: 1094530956}
 --- !u!4 &814232245
 Transform:

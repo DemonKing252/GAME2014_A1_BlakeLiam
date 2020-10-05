@@ -28,6 +28,7 @@ public enum Difficulty : int
 public struct Player
 {
     public static float health;
+    public static float score = 0.0f;
 }
 
 
@@ -35,7 +36,6 @@ public class Utilities : MonoBehaviour
 {
     public static Difficulty difficulty;
     public static int scenesChanged = 0;
-    public static int score = 0;
     // Start is called before the first frame update
 
     

@@ -12,6 +12,7 @@ Purpose:
     Handles the events of the main menu buttons
 
 ***************/
+
 public class MainMenuScript : MonoBehaviour
 {
     // Called when Start Game button is pressed:
@@ -29,11 +30,11 @@ public class MainMenuScript : MonoBehaviour
     {
         Debug.Log("Quitting Game...");
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;            
-    #else   
+#else
         Application.Quit();
-    #endif
+#endif
     }
 
     // Start is called before the first frame update
@@ -48,6 +49,7 @@ public class MainMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
     }
 
     public AudioSource menuTheme;

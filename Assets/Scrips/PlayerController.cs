@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour
 
             // These functions have lots of issues
             /***
-                Vector3 rot2 = Vector3.RotateTowards(gameObject.transform.position, touchWorldSpace, 50.0f, 50.0f);
                 float angle = Vector3.AngleBetween(gameObject.transform.position, touchWorldSpace);
             ***/
+
             Vector2 delta = touchWorldSpace - gameObject.transform.position;
+         
+            delta.Normalize();
 
             float angle = Mathf.Atan2(delta.y, delta.x) - (Mathf.PI / 2.0f);
 
@@ -48,7 +50,8 @@ public class PlayerController : MonoBehaviour
             if (time >= delayBetweenFiring)
             {
                 time = 0.0f;
-                Instantiate(bulletPrefab, playerCentreLocation.position, gameObject.transform.rotation);
+                GameObject go = Instantiate(bulletPrefab, playerCentreLocation.position, rot);
+                go.GetComponent<Rigidbody2D>().velocity = delta;
             }
         }
         

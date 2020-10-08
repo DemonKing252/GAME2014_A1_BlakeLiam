@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
@@ -22,17 +23,26 @@ public class GameScript : MonoBehaviour
     public Text health;
     public Image healthImage;
     public Image heartImage;
- 
+
+    [SerializeField]
+    List<GameObject> m_spawnPoints;
+
+    [SerializeField]
+    GameObject zombieMinor;
 
     // Call Lose state (to prove it works)
     public void LoseState()
     {
         // Index 3 is lose scene (look in Unity->File->Build Settings->Scenes in Build
         SceneManager.LoadScene((int)Scene.Lose);
+        
     }
     public AudioSource mainTheme;
+    private float time;
+    private float timeToNext;
 
     // Start is called before the first frame update
+    [System.Obsolete]
     void Start()
     {
         // Liam's note:
@@ -65,11 +75,28 @@ public class GameScript : MonoBehaviour
             mainTheme.loop = true;
         }
         scoreText.text = "Score: " + Player.score.ToString();
+
+        time = 0.0f;
+        timeToNext = Random.Range(2.0f, 5.0f);
     }
 
     // Update is called once per frame
+    [System.Obsolete]
     void Update()
     {
+        time += Time.deltaTime;
+        if (time >= timeToNext)
+        {
+            time = 0.0f;
+            timeToNext = Random.Range(2.0f, 5.0f);
+
+            int index = Random.RandomRange(0, m_spawnPoints.Count);
+            Instantiate(zombieMinor, m_spawnPoints[index].transform.position, Quaternion.identity);
+
+        }
+
+
+
         scoreText.rectTransform.position = new Vector2(Screen.safeArea.xMin + scoreText.rectTransform.rect.width * 0.5f + 20.0f, Screen.safeArea.yMax - scoreText.rectTransform.rect.height * 0.5f - 50.0f);
         health.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f + 70.0f, Screen.safeArea.yMax - health.rectTransform.rect.height * 0.5f - 50.0f);
         heartImage.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f - 50.0f, Screen.safeArea.yMax - heartImage.rectTransform.rect.height * 0.5f);

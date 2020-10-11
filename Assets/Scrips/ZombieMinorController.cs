@@ -2,7 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/*
+File: ZombieMinorController.cs
+Author: Liam Blake
+Created: 2020-09-28
+Modified: 2020-10-11
+Desc:
+    Manager for every zombie (tier: minor).
 
+*/
 public class ZombieMinorController : MonoBehaviour
 {
     [SerializeField]

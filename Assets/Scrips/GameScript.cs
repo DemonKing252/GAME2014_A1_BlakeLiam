@@ -9,7 +9,7 @@ using UnityEngine.UI;
 File: GameScript.cs
 Author: Liam Blake
 Created: 2020-09-21
-Modified: 2020-09-21
+Modified: 2020-10-11
 Desc:
     Manager for the game scene. For now we have no game logic yet 
 
@@ -29,6 +29,9 @@ public class GameScript : MonoBehaviour
 
     [SerializeField]
     GameObject zombieMinor;
+
+    [SerializeField]
+    GameObject zombieMajor;
 
     // Call Lose state (to prove it works)
     public void LoseState()
@@ -91,11 +94,21 @@ public class GameScript : MonoBehaviour
             timeToNext = Random.Range(2.0f, 5.0f);
 
             int index = Random.RandomRange(0, m_spawnPoints.Count);
-            Instantiate(zombieMinor, m_spawnPoints[index].transform.position, Quaternion.identity);
 
+
+            // 20% chance for a zombie major (2x health) (75% speed)
+            // 80% chance for a zombie minor (1x health) (100% speed) 
+            
+            int randomZombieSelection = Random.Range(0, 100);
+            if (randomZombieSelection <= 20) {
+                Instantiate(zombieMajor, m_spawnPoints[index].transform.position, Quaternion.identity);
+            }
+            else {
+                Instantiate(zombieMinor, m_spawnPoints[index].transform.position, Quaternion.identity);
+            }
         }
 
-
+        //Debug.Log(Random.Range(1.0f, 40.0f));
 
         scoreText.rectTransform.position = new Vector2(Screen.safeArea.xMin + scoreText.rectTransform.rect.width * 0.5f + 20.0f, Screen.safeArea.yMax - scoreText.rectTransform.rect.height * 0.5f - 50.0f);
         health.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f + 70.0f, Screen.safeArea.yMax - health.rectTransform.rect.height * 0.5f - 50.0f);

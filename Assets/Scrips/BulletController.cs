@@ -1,6 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/*
+File: BulletController.cs
+Author: Liam Blake
+Created: 2020-10-11
+Modified: 2020-10-11
+Desc:
+    Manager for every bullet that is fired by the player.
+
+*/
 
 public class BulletController : MonoBehaviour
 {
@@ -19,7 +28,7 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        // Check if the object left the scene
         CheckBounds();
     }
     private void CheckBounds()

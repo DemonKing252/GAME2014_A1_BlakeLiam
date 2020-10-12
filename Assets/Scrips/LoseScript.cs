@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 File: LoseScript.cs
 Author: Liam Blake
 Created: 2020-09-22
-Modified: 2020-09-24
+Modified: 2020-10-12
 Desc:
     Manager for the lose scene of this game.
 
@@ -14,6 +14,8 @@ Desc:
 
 public class LoseScript : MonoBehaviour
 {
+    public AudioSource theme;
+
     public void PlayAgain()
     {
         SceneManager.LoadScene((int)Scene.Game);
@@ -29,6 +31,8 @@ public class LoseScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        theme.Play();
+
         if (Utilities.scenesChanged == 0)
         {
             SceneManager.LoadScene((int)Scene.MainMenu);
@@ -36,9 +40,4 @@ public class LoseScript : MonoBehaviour
         Utilities.scenesChanged++;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

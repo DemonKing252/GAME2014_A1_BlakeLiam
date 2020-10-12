@@ -13,6 +13,7 @@ Desc:
 ***************/
 public class InstructionScript : MonoBehaviour
 {
+    public AudioSource mainTheme;
     public void BackToMenu()
     {
         SceneManager.LoadScene((int)Scene.MainMenu);
@@ -26,7 +27,10 @@ public class InstructionScript : MonoBehaviour
         {
             SceneManager.LoadScene((int)Scene.MainMenu);
         }
-        Utilities.scenesChanged++;  
+        Utilities.scenesChanged++;
+
+        if (mainTheme != null)
+            mainTheme.Play();
     }
 
     // Update is called once per frame

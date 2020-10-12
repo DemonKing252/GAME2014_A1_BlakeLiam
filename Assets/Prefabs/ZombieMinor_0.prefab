@@ -226,6 +226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 9100000, guid: b8abc26e2d6da404ca4449b07d443946, type: 2}
   explosionTime: 1.25
+  m_health: 100
+  pointsWorth: 10
 --- !u!50 &289216990626258620
 Rigidbody2D:
   serializedVersion: 4

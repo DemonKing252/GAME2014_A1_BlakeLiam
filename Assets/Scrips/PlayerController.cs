@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -12,6 +13,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     float delayBetweenFiring;
+
+    [SerializeField]
+    GameScript gScene;
+
+    [SerializeField]
+    public float bulletDamage;
     
     // Start is called before the first frame update
     void Start()
@@ -25,6 +32,8 @@ public class PlayerController : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+        //gScene.UpdateScoreText(1.0f);
+
         time += Time.deltaTime;
         foreach (var touch in Input.touches)
         {

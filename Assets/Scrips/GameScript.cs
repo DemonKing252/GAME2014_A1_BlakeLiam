@@ -14,6 +14,7 @@ Desc:
     Manager for the game scene. For now we have no game logic yet 
 
 ********************/
+[System.Serializable]
 public class GameScript : MonoBehaviour
 {
     public Text scoreText;
@@ -77,7 +78,6 @@ public class GameScript : MonoBehaviour
             mainTheme.Play();
             mainTheme.loop = true;
         }
-        scoreText.text = "Score: " + Player.score.ToString();
 
         time = 0.0f;
         timeToNext = Random.Range(2.0f, 5.0f);
@@ -114,5 +114,12 @@ public class GameScript : MonoBehaviour
         health.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f + 70.0f, Screen.safeArea.yMax - health.rectTransform.rect.height * 0.5f - 50.0f);
         heartImage.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f - 50.0f, Screen.safeArea.yMax - heartImage.rectTransform.rect.height * 0.5f);
         
+    }
+    public void UpdateScoreText(float addBy)
+    {
+        Player.score += addBy;
+
+        scoreText.text = "Score: " + Player.score.ToString();
+        //Debug.Log("Test");
     }
 }

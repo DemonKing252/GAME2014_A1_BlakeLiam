@@ -22,6 +22,16 @@ public class EnemySpriteScript : MonoBehaviour
     [SerializeField]
     float animationClipTime;
 
+    [SerializeField]
+    float health;
+
+    [SerializeField]
+    float pointsWorth;
+
+
+    private GameScript gScript;
+    private PlayerController pScript;
+
     // Time how long it takes to finish the explosion animation. When it finishes, we destroy the game object.
     private float m_time = 0.0f;
     private bool startExplosion;
@@ -29,6 +39,9 @@ public class EnemySpriteScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gScript = FindObjectOfType<GameScript>();
+        pScript = FindObjectOfType<PlayerController>();
+
         // Flip the sprite Y-axis so its not facing backwards.
         gameObject.transform.localScale = new Vector3(1, -1, 1);
 
@@ -51,17 +64,22 @@ public class EnemySpriteScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            startExplosion = true;
-            GetComponent<Animator>().runtimeAnimatorController = explosionAnimator;
-
-            // Stop the zombie from moving
-            gameObject.GetComponent<AIPath>().enabled = false;
-
-            // Prevent the player from getting points by killing a dead zombie (until we destroy the game object)
-            gameObject.GetComponent<Rigidbody2D>().simulated = false;
-
+            health -= pScript.bulletDamage;
             Destroy(collision.gameObject);
 
+            if (health <= 0.0f)
+            {
+                gScript.UpdateScoreText(pointsWorth);
+                startExplosion = true;
+                GetComponent<Animator>().runtimeAnimatorController = explosionAnimator;
+
+                // Stop the zombie from moving
+                gameObject.GetComponent<AIPath>().enabled = false;
+
+                // Prevent the player from getting points by killing a dead zombie (until we destroy the game object)
+                gameObject.GetComponent<Rigidbody2D>().simulated = false;
+
+            }
         }
     }
 

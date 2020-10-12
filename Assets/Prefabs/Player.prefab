@@ -378,3 +378,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8351317593187690901, guid: 3fbb8f12a0ab9f145952fd13eaf53757, type: 3}
   playerCentreLocation: {fileID: 4890842003681075727}
   delayBetweenFiring: 0.25
+  gScene: {fileID: 0}
+  bulletDamage: 20

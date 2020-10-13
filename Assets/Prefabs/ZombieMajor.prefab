@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -255355946758564822}
   m_Layer: 0
   m_Name: ZombieMajor
-  m_TagString: Untagged
+  m_TagString: ZombieMajor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionAnimator: {fileID: 9100000, guid: b8abc26e2d6da404ca4449b07d443946, type: 2}
-  aiPath: {fileID: 8126105351410719737}
+  goldObj: {fileID: 3199896989354043609, guid: 25dcf29c0ebb2694ca8c3116ab0b449b, type: 3}
   animationClipTime: 1.25
   health: 200
   pointsWorth: 20
@@ -182,9 +182,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 0.46
   pickNextWaypointDist: 0.59
-  endReachedDistance: 0.2
+  endReachedDistance: 0.55
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0

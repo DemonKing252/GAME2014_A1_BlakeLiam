@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PlayerController : MonoBehaviour
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
             ***/
 
             Vector2 delta = touchWorldSpace - gameObject.transform.position;
-         
+
             delta.Normalize();
 
             float angle = Mathf.Atan2(delta.y, delta.x) - (Mathf.PI / 2.0f);
@@ -58,11 +60,46 @@ public class PlayerController : MonoBehaviour
 
             if (time >= delayBetweenFiring)
             {
+                gScene.fire.Play();
+                //fire.Play();
                 time = 0.0f;
                 GameObject go = Instantiate(bulletPrefab, playerCentreLocation.position, rot);
                 go.GetComponent<Rigidbody2D>().velocity = delta;
             }
         }
-        
+
+        GameObject[] gos_in_zombie_minor = GameObject.FindGameObjectsWithTag("ZombieMinor");
+
+        foreach (var iter in gos_in_zombie_minor)
+        {
+            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(iter.GetComponent<Collider2D>()))
+            {
+                Player.health -= 7.5f * Time.deltaTime;
+                gScene.health.text = Player.health.ToString("F0");
+            }
+        }
+        GameObject[] gos_in_zombie_major = GameObject.FindGameObjectsWithTag("ZombieMajor");
+
+        foreach (var iter in gos_in_zombie_major)
+        {
+            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(iter.GetComponent<Collider2D>()))
+            {
+                Player.health -= 15.0f * Time.deltaTime;
+                gScene.health.text = Player.health.ToString("F0");
+            }
+        }
+        if (Player.ready == true && Player.health <= 0.0f && Utilities.scenesChanged >= 2)
+        {
+            // prevent the lose scene from being loaded immediately. since the 
+            // level of health isn't determined until start() on game scene. and there is no 
+            // guarantee that Player.Update() and GameScript.Start() are synced. So Player.Update could be called first
+            // before the difficulty is determined
+            Player.ready = false;   
+            // reset the score back to zero.
+            gScene.UpdateScoreText(-Player.score);
+
+            SceneManager.LoadScene((int)Scene.Lose);
+        }
     }
+    
 }

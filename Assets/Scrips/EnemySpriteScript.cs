@@ -17,7 +17,7 @@ public class EnemySpriteScript : MonoBehaviour
     RuntimeAnimatorController explosionAnimator;
 
     [SerializeField]
-    AIPath aiPath;
+    GameObject goldObj;
 
     [SerializeField]
     float animationClipTime;
@@ -27,7 +27,6 @@ public class EnemySpriteScript : MonoBehaviour
 
     [SerializeField]
     float pointsWorth;
-
 
     private GameScript gScript;
     private PlayerController pScript;
@@ -57,6 +56,13 @@ public class EnemySpriteScript : MonoBehaviour
             if (m_time >= animationClipTime)
             {
                 Destroy(gameObject);
+
+                int rand = Random.Range(0, 100);
+
+                // 10% chance for a gold drop
+                if (rand <= 10)
+                    Instantiate(goldObj, gameObject.transform.position, Quaternion.identity);
+
             }
         }
     }
@@ -69,6 +75,8 @@ public class EnemySpriteScript : MonoBehaviour
 
             if (health <= 0.0f)
             {
+                gScript.explode.Play();
+
                 gScript.UpdateScoreText(pointsWorth);
                 startExplosion = true;
                 GetComponent<Animator>().runtimeAnimatorController = explosionAnimator;

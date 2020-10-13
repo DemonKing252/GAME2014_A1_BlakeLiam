@@ -27,6 +27,7 @@ public enum Difficulty : int
 // Access from the lose state to print the health:
 public struct Player
 {
+    public static bool ready = false;
     public static float health;
     public static float score = 0.0f;
 }

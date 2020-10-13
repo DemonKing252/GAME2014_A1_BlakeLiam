@@ -26,12 +26,18 @@ public class ZombieMinorController : MonoBehaviour
     [SerializeField]
     float pointsWorth;
 
+    [SerializeField]
+    GameObject goldObj;
+
     private PlayerController pScript;
 
     private GameScript gScript;
 
     private float timer = 0.0f;
     private bool kill = false;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +57,11 @@ public class ZombieMinorController : MonoBehaviour
         if (timer >= explosionTime)
         {
             Destroy(this.gameObject);
+            int rand = Random.Range(0, 100);
+
+            // 10% chance for a gold drop
+            if (rand <= 10)
+                Instantiate(goldObj, gameObject.transform.position, Quaternion.identity);
         }
         //Debug.Log(pScript.bulletDamage);
     }
@@ -63,6 +74,10 @@ public class ZombieMinorController : MonoBehaviour
 
             if (m_health <= 0.0f)
             {
+                gScript.explode.Play();
+                //explode.volume = 25.0f;
+                //explode.Play();
+
                 gScript.UpdateScoreText(pointsWorth);
                 kill = true;
 

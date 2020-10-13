@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,7 @@ public class GameScript : MonoBehaviour
     // Note:
     // I'm not using Text Mesh Pro as my custom font doesn't work for it:
     public Text health;
+    public Text msgText;
     public Image healthImage;
     public Image heartImage;
 
@@ -41,9 +43,13 @@ public class GameScript : MonoBehaviour
         SceneManager.LoadScene((int)Scene.Lose);
         
     }
+    public AudioSource fire;
     public AudioSource mainTheme;
+    public AudioSource pickup;
+    public AudioSource explode;
     private float time;
     private float timeToNext;
+    GameObject[] goldFound;
 
     // Start is called before the first frame update
     [System.Obsolete]
@@ -67,26 +73,45 @@ public class GameScript : MonoBehaviour
                 Player.health = 100.0f;
                 break;
             case Difficulty.Hard:
-                Player.health = 75.0f;
+                Player.health = 50.0f;
                 break;
         }
+        Player.ready = true;
+        
         health.text = Player.health.ToString();
+
 
         if (mainTheme != null)
         {
-            mainTheme.volume = 50.0f;
-            mainTheme.Play();
+            //mainTheme.Play();
             mainTheme.loop = true;
         }
 
         time = 0.0f;
         timeToNext = Random.Range(2.0f, 5.0f);
+
+
+        msgText.text = "You got a gold drop, touch it for bonus points!";
+        //msgText.rectTransform.position = new Vector2(0.0f, -2105.0f);
     }
 
     // Update is called once per frame
     [System.Obsolete]
     void Update()
     {
+        goldFound = GameObject.FindGameObjectsWithTag("Gold");
+
+        if (goldFound != null)
+        {
+            if (goldFound.Length >= 1)
+                msgText.enabled = true;
+            else
+                msgText.enabled = false;
+                    //msgText = HideFlags.HideAndDontSave;
+            //else
+                //msgText.hideFlags = HideFlags.None;
+        } 
+
         time += Time.deltaTime;
         if (time >= timeToNext)
         {

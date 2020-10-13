@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 289216990626258620}
   m_Layer: 0
   m_Name: ZombieMinor_0
-  m_TagString: Untagged
+  m_TagString: ZombieMinor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,9 +165,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 0.4
   pickNextWaypointDist: 0.58
-  endReachedDistance: 0.2
+  endReachedDistance: 0.53
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -228,6 +228,7 @@ MonoBehaviour:
   explosionTime: 1.25
   m_health: 100
   pointsWorth: 10
+  goldObj: {fileID: 3199896989354043609, guid: 25dcf29c0ebb2694ca8c3116ab0b449b, type: 3}
 --- !u!50 &289216990626258620
 Rigidbody2D:
   serializedVersion: 4

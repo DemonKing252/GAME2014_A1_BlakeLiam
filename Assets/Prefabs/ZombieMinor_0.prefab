@@ -229,6 +229,7 @@ MonoBehaviour:
   m_health: 100
   pointsWorth: 10
   goldObj: {fileID: 3199896989354043609, guid: 25dcf29c0ebb2694ca8c3116ab0b449b, type: 3}
+  text: {fileID: 1948447547260671676, guid: 8cd66ca967f8d894184f7f88ece6bec6, type: 3}
 --- !u!50 &289216990626258620
 Rigidbody2D:
   serializedVersion: 4

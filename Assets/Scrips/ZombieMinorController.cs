@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.GameCenter;
+using UnityEngine.UI;
 /*
 File: ZombieMinorController.cs
 Author: Liam Blake
@@ -28,6 +29,9 @@ public class ZombieMinorController : MonoBehaviour
 
     [SerializeField]
     GameObject goldObj;
+
+    [SerializeField]
+    GameObject text;
 
     private PlayerController pScript;
 
@@ -56,6 +60,10 @@ public class ZombieMinorController : MonoBehaviour
         }
         if (timer >= explosionTime)
         {
+            // Instantiate a score text with the amount of points that this game object is worth when destroyed/collected.
+            text.GetComponent<TextMesh>().text = "+" + pointsWorth.ToString("F0");
+            Instantiate(text, gameObject.transform.position, Quaternion.identity);
+
             Destroy(this.gameObject);
             int rand = Random.Range(0, 100);
 

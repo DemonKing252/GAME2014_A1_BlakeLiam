@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /********************
 File: EnemySpriteScript.cs
 Author: Liam Blake
 Created: 2020-09-26
-Modified: 2020-09-26
+Modified: 2020-10-14
 Desc:
-    Manager for the game scene. For now we have no game logic yet 
+    Manager for the game scene.
 
 ********************/
 public class EnemySpriteScript : MonoBehaviour
@@ -27,6 +28,9 @@ public class EnemySpriteScript : MonoBehaviour
 
     [SerializeField]
     float pointsWorth;
+
+    [SerializeField]
+    GameObject text;
 
     private GameScript gScript;
     private PlayerController pScript;
@@ -55,6 +59,10 @@ public class EnemySpriteScript : MonoBehaviour
 
             if (m_time >= animationClipTime)
             {
+                // Instantiate a score text with the amount of points that this game object is worth when destroyed/collected.
+                text.GetComponent<TextMesh>().text = "+" + pointsWorth.ToString("F0");
+                Instantiate(text, gameObject.transform.position, Quaternion.identity);
+                
                 Destroy(gameObject);
 
                 int rand = Random.Range(0, 100);

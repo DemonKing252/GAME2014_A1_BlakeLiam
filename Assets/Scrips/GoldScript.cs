@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /*
 File: GoldScript.cs
 Author: Liam Blake
@@ -18,6 +19,8 @@ public class GoldScript : MonoBehaviour
     [SerializeField]
     float pointsWorth;
 
+    [SerializeField]
+    GameObject text;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +35,7 @@ public class GoldScript : MonoBehaviour
 
         if (time >= 5.0f)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
 
         foreach (var touch in Input.touches)
@@ -42,6 +45,11 @@ public class GoldScript : MonoBehaviour
 
             if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPosition))
             {
+                // Instantiate a score text with the amount of points that this game object is worth when destroyed/collected.
+                text.GetComponent<TextMesh>().text = "+" + pointsWorth.ToString("F0");
+                Instantiate(text, gameObject.transform.position, Quaternion.identity);
+
+
                 gScript.pickup.Play();
                 gScript.UpdateScoreText(pointsWorth);
                 Destroy(gameObject);

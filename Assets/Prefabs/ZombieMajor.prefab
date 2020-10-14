@@ -125,6 +125,7 @@ MonoBehaviour:
   animationClipTime: 1.25
   health: 200
   pointsWorth: 20
+  text: {fileID: 1948447547260671676, guid: 8cd66ca967f8d894184f7f88ece6bec6, type: 3}
 --- !u!114 &8126105351410719738
 MonoBehaviour:
   m_ObjectHideFlags: 0

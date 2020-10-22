@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 9100000, guid: b8abc26e2d6da404ca4449b07d443946, type: 2}
+  diamond: {fileID: 2357085264809765658, guid: f5ea42ca2bb0c324fb2ff70fce03c461, type: 3}
   explosionTime: 1.25
   m_health: 100
   pointsWorth: 10

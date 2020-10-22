@@ -18,6 +18,9 @@ public class EnemySpriteScript : MonoBehaviour
     RuntimeAnimatorController explosionAnimator;
 
     [SerializeField]
+    GameObject diamond;
+
+    [SerializeField]
     GameObject goldObj;
 
     [SerializeField]
@@ -70,6 +73,13 @@ public class EnemySpriteScript : MonoBehaviour
                 // 10% chance for a gold drop
                 if (rand <= 10)
                     Instantiate(goldObj, gameObject.transform.position, Quaternion.identity);
+
+
+                int rand2 = Random.Range(0, 100);
+
+                // 5% for a diamond drop
+                if (rand2 <= 5)
+                    Instantiate(diamond, gameObject.transform.position, Quaternion.identity);
 
             }
         }

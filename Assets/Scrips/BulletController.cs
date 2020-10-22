@@ -21,7 +21,8 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         //Debug.Log("Bullet created!");
-        GetComponent<Rigidbody2D>().velocity *= speed; 
+        GetComponent<Rigidbody2D>().velocity *= speed;
+
 
     }
 

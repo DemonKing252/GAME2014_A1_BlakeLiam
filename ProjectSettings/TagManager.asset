@@ -8,6 +8,7 @@ TagManager:
   - Gold
   - ZombieMajor
   - ZombieMinor
+  - Diamond
   layers:
   - Default
   - TransparentFX

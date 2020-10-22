@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionAnimator: {fileID: 9100000, guid: b8abc26e2d6da404ca4449b07d443946, type: 2}
+  diamond: {fileID: 2357085264809765658, guid: f5ea42ca2bb0c324fb2ff70fce03c461, type: 3}
   goldObj: {fileID: 3199896989354043609, guid: 25dcf29c0ebb2694ca8c3116ab0b449b, type: 3}
   animationClipTime: 1.25
   health: 200

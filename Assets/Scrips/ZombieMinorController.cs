@@ -19,6 +19,9 @@ public class ZombieMinorController : MonoBehaviour
     RuntimeAnimatorController explosion;
 
     [SerializeField]
+    GameObject diamond;
+
+    [SerializeField]
     float explosionTime;
 
     [SerializeField]
@@ -70,6 +73,12 @@ public class ZombieMinorController : MonoBehaviour
             // 10% chance for a gold drop
             if (rand <= 10)
                 Instantiate(goldObj, gameObject.transform.position, Quaternion.identity);
+
+            int rand2 = Random.Range(0, 100);
+
+            // 5% for a diamond drop
+            if (rand2 <= 5)
+                Instantiate(diamond, gameObject.transform.position, Quaternion.identity);
         }
         //Debug.Log(pScript.bulletDamage);
     }

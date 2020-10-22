@@ -50,6 +50,7 @@ public class GameScript : MonoBehaviour
     private float time;
     private float timeToNext;
     GameObject[] goldFound;
+    GameObject[] diamondFound;
 
     // Start is called before the first frame update
     [System.Obsolete]
@@ -100,16 +101,28 @@ public class GameScript : MonoBehaviour
     void Update()
     {
         goldFound = GameObject.FindGameObjectsWithTag("Gold");
-
-        if (goldFound != null)
+        diamondFound = GameObject.FindGameObjectsWithTag("Diamond");
+        if (goldFound != null || diamondFound != null)
         {
-            if (goldFound.Length >= 1)
+            if (goldFound.Length > 0 && diamondFound.Length == 0)
+            {
                 msgText.enabled = true;
+                msgText.text = "You got a gold drop, touch it for bonus points!";
+            }
+            else if (diamondFound.Length > 0 && goldFound.Length == 0)
+            {
+                msgText.enabled = true;
+                msgText.text = "You got a diamond drop, touch it for bonus points!";
+            }
+            else if (diamondFound.Length > 0 && goldFound.Length > 0)
+            {
+                msgText.enabled = true;
+                msgText.text = "You got a diamond and gold drop, touch it for bonus points!";
+            }
             else
+            {
                 msgText.enabled = false;
-                    //msgText = HideFlags.HideAndDontSave;
-            //else
-                //msgText.hideFlags = HideFlags.None;
+            }
         } 
 
         time += Time.deltaTime;

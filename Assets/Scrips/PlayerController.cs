@@ -96,7 +96,6 @@ public class PlayerController : MonoBehaviour
             // before the difficulty is determined
             Player.ready = false;   
             // reset the score back to zero.
-            gScene.UpdateScoreText(-Player.score);
 
             SceneManager.LoadScene((int)Scene.Lose);
         }

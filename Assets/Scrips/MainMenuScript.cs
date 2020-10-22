@@ -20,16 +20,19 @@ public class MainMenuScript : MonoBehaviour
     {
         Debug.Log("Leaving Main Menu Scene...");
         SceneManager.LoadScene((int)Scene.LevelOfDifficulty);
+
+        click.Play();
     }
     public void LoadInstrctions()
     {
         SceneManager.LoadScene((int)Scene.Instruction);
+        click.Play();
     }
     // Called when Quit Game button is pressed:
     public void QuitGame()
     {
         Debug.Log("Quitting Game...");
-
+        click.Play();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;            
 #else
@@ -52,5 +55,9 @@ public class MainMenuScript : MonoBehaviour
        
     }
 
-    public AudioSource menuTheme;
+    [SerializeField]
+    AudioSource menuTheme;
+
+    [SerializeField]
+    AudioSource click;
 }

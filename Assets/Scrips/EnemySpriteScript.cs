@@ -56,6 +56,10 @@ public class EnemySpriteScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Vector3.Magnitude(GetComponent<AIPath>().velocity) <= 0.1f && GetComponent<AIPath>().enabled == true)
+            GetComponent<Animator>().enabled = false;
+        else
+            GetComponent<Animator>().enabled = true;
         if (startExplosion)
         {
             m_time += Time.deltaTime;

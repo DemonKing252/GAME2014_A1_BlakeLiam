@@ -13,7 +13,11 @@ Desc:
 *************************************/
 public class LevelOfDifficultyScript : MonoBehaviour
 {
-    public AudioSource theme;
+    [SerializeField]
+    AudioSource theme;
+
+    [SerializeField]
+    AudioSource click;
 
     // Start is called before the first frame update
     void Start()
@@ -37,18 +41,21 @@ public class LevelOfDifficultyScript : MonoBehaviour
     }
     public void Easy()
     {
+        click.Play();
         Debug.Log("Difficulty Selected: Difficulty.Easy - Starting with 150 health points");
         Utilities.difficulty = Difficulty.Easy;
         SceneManager.LoadScene((int)Scene.Game);
     }
     public void Normal()
     {
+        click.Play();
         Debug.Log("Difficulty Selected: Difficulty.Normal - Starting with 100 health points");
         Utilities.difficulty = Difficulty.Normal;
         SceneManager.LoadScene((int)Scene.Game);
     }
     public void Hard()
     {
+        click.Play();
         Debug.Log("Difficulty Selected: Difficulty.Hard - Starting with 75 health points");
         Utilities.difficulty = Difficulty.Hard;
         SceneManager.LoadScene((int)Scene.Game);

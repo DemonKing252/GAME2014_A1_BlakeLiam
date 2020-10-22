@@ -94,6 +94,9 @@ public class GameScript : MonoBehaviour
 
         msgText.text = "You got a gold drop, touch it for bonus points!";
         //msgText.rectTransform.position = new Vector2(0.0f, -2105.0f);
+
+        Player.score = 0.0f;
+        UpdateScoreText(0.0f);
     }
 
     // Update is called once per frame

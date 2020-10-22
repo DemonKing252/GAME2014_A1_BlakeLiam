@@ -13,11 +13,17 @@ Desc:
 ***************/
 public class InstructionScript : MonoBehaviour
 {
-    public AudioSource mainTheme;
+    [SerializeField]
+    AudioSource mainTheme;
+
+    [SerializeField]
+    AudioSource click;
+
     public void BackToMenu()
     {
         SceneManager.LoadScene((int)Scene.MainMenu);
         Utilities.scenesChanged++;
+        click.Play();
     }
 
     // Start is called before the first frame update

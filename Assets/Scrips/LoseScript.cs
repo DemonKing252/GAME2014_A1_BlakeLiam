@@ -15,37 +15,34 @@ Desc:
 
 public class LoseScript : MonoBehaviour
 {
-    public AudioSource theme;
+    [SerializeField]
+    AudioSource theme;
 
     [SerializeField]
     Text text;
 
     [SerializeField]
-    GameScript gScript;
-    
+    AudioSource click;
 
     public void PlayAgain()
     {
+        click.Play();
         SceneManager.LoadScene((int)Scene.Game);
         Utilities.scenesChanged++;
 
 
-        gScript.UpdateScoreText(-Player.score);
     }
     public void BackToMenu()
     {
+        click.Play();
         SceneManager.LoadScene((int)Scene.MainMenu);
-
         Utilities.scenesChanged++;
 
-
-        gScript.UpdateScoreText(-Player.score);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        gScript = FindObjectOfType<GameScript>();
 
 
         text.text = "Your Score: " + Player.score.ToString();

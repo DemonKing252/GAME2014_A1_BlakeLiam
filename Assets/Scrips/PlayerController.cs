@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
                 time = 0.0f;
                 GameObject go = Instantiate(bulletPrefab, playerCentreLocation.position, rot);
                 go.GetComponent<Rigidbody2D>().velocity = delta;
+
             }
         }
 
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (var iter in gos_in_zombie_minor)
         {
-            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(iter.GetComponent<Collider2D>()))
+            if (gameObject.GetComponent<Collider2D>().IsTouching(iter.GetComponent<Collider2D>()))
             {
                 Player.health -= 7.5f * Time.deltaTime;
                 gScene.health.text = Player.health.ToString("F0");
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (var iter in gos_in_zombie_major)
         {
-            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(iter.GetComponent<Collider2D>()))
+            if (gameObject.GetComponent<Collider2D>().IsTouching(iter.GetComponent<Collider2D>()))
             {
                 Player.health -= 15.0f * Time.deltaTime;
                 gScene.health.text = Player.health.ToString("F0");

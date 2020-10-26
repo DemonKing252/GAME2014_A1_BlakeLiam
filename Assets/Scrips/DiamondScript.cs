@@ -43,7 +43,7 @@ public class DiamondScript : MonoBehaviour
             var wp = Camera.main.ScreenToWorldPoint(touch.position);
             var touchPosition = new Vector2(wp.x, wp.y);
 
-            if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPosition))
+            if (GetComponent<Collider2D>().OverlapPoint(touchPosition))
             {
 
                 // Instantiate a score text with the amount of points that this game object is worth when destroyed/collected.

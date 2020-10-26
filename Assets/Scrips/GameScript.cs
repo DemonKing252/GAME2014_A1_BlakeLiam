@@ -105,6 +105,8 @@ public class GameScript : MonoBehaviour
     {
         goldFound = GameObject.FindGameObjectsWithTag("Gold");
         diamondFound = GameObject.FindGameObjectsWithTag("Diamond");
+
+        // Determine if theres any gold or diamonds on the map, promt the message with a message for that:
         if (goldFound != null || diamondFound != null)
         {
             if (goldFound.Length > 0 && diamondFound.Length == 0)
@@ -149,8 +151,7 @@ public class GameScript : MonoBehaviour
             }
         }
 
-        //Debug.Log(Random.Range(1.0f, 40.0f));
-
+        // Keep all of our UI inside the safe zone:
         scoreText.rectTransform.position = new Vector2(Screen.safeArea.xMin + scoreText.rectTransform.rect.width * 0.5f + 20.0f, Screen.safeArea.yMax - scoreText.rectTransform.rect.height * 0.5f - 50.0f);
         health.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f + 70.0f, Screen.safeArea.yMax - health.rectTransform.rect.height * 0.5f - 50.0f);
         heartImage.rectTransform.position = new Vector2(Screen.safeArea.xMin + Screen.safeArea.width * 0.5f - 50.0f, Screen.safeArea.yMax - heartImage.rectTransform.rect.height * 0.5f);
